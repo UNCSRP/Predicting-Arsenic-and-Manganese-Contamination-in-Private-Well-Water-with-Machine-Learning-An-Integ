@@ -1,2 +1,2 @@
 # Arsenic Prediction
-- Predicting arsenic concentration based on well data using supervised ML (RF and SVM)
+- Predicting arsenic concentration based on well data using supervised ML (random forest)
