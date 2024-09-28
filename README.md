@@ -6,11 +6,10 @@
 # 2. Metal Prediction (Table 2 & 4, Table S1 & S2)
 - Predicting arsenic and manganese contamination based on well data using supervised ML (random forest and support vector machine (SVM))
 
-# 3. ML Visualizations (Figure 2-4)
+# 3. ML Visualizations (Figures 2-4)
 - Confusion Matrix Figure (Figure 2)
-  - Visualization of confusion matrix metrics from top performing supervised machine learning models across the use cases (SVM with a linear kernel)
-  - This was done to visualize the generalizability of the models' accuracy after removing longitude and latitude in use case 2
+  - Visualization of confusion matrix metrics from top performing supervised machine learning model across the use cases (SVM with a linear kernel)
 - Variable Importance Plot (Figure 3)
-  - Shows importance of each predictor for top performing machine learning (ML) models
+  - Shows importance of each predictor from the top performing machine learning (ML) models (SVM with a linear kernel) for use case 1
 - Decision Boundary Plot (Figure 4)
-  - Visualization of two predictors in the top performing model to determine how well those variables could predict As well concentration
+  - Visualization of two predictors to determine how well those variables could predict metal contamination
