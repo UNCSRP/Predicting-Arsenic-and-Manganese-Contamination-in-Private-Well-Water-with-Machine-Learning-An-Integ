@@ -3,7 +3,7 @@
 # 1. Data Imputation
 - Using random forest to impute the predictor variables and Quantile Regression Imputation of Left-Censored Data (QRILC) to impute each metal concentration
 
-# 2. iAs/Mn Contamination Mapping
+# 2. iAs/Mn Contamination Mapping (Figure 1)
 - Viusalizing iAs/Mn contamination by census tract in Union County, NC
 
 # 3. Metal Prediction (Table 2 & 4, Table S1 & S2)
