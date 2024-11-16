@@ -4,7 +4,7 @@
 - Using random forest to impute the predictor variables and Quantile Regression Imputation of Left-Censored Data (QRILC) to impute each metal concentration
 
 # 2. iAs/Mn Contamination Mapping (Figure 1)
-- Viusalizing iAs/Mn contamination by census tract in Union County, NC
+- Visualizing iAs/Mn contamination by census tract in Union County, NC
 
 # 3. Metal Prediction (Table 2 & 4, Table S1 & S2)
 - Predicting arsenic and manganese contamination based on well data using supervised ML (random forest and support vector machine (SVM))
