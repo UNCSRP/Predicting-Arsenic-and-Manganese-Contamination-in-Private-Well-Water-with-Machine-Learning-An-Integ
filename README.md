@@ -1,4 +1,5 @@
 # P1012-NC_Well_Arsenic
+> Analyses used to determine if geologic factor and well construction characteristics can predict metal contamination and what thresholds are certain wells more vulnerable.
 
 # 1. Data Imputation
 - Using random forest to impute the predictor variables and Quantile Regression Imputation of Left-Censored Data (QRILC) to impute each metal concentration
