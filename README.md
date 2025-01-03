@@ -6,17 +6,17 @@
 In the instance that the files are unable to rendered the [NBViewer link](). 
 
 # 1. Data Imputation
-- Using random forest to impute the predictor variables and Quantile Regression Imputation of Left-Censored Data (QRILC) to impute each metal concentration
+- Using random forest to impute the predictor variables and Quantile Regression Imputation of Left-Censored Data (QRILC) to impute each metal's concentration
 
 # 2. iAs/Mn Contamination Mapping (Figure 1)
 - Visualizing iAs/Mn contamination by census tract in Union County, NC
 
-# 3. Metal Prediction (Table 2 & 4, Table S1 & S2)
+# 3. Metal Prediction (Table 3)
 - Predicting arsenic and manganese contamination based on well data using supervised ML (random forest and support vector machine (SVM))
 
 # 4. ML Visualizations (Figures 2-4)
 - Confusion Matrix Figure (Figure 2)
-  - Visualization of confusion matrix metrics from top performing supervised machine learning model across the use cases (SVM with a linear kernel)
+  - Visualization of confusion matrix metrics from the top performing supervised machine learning model across the use cases (SVM with a linear kernel)
 - Variable Importance Plot (Figure 3)
   - Shows importance of each predictor from the top performing machine learning (ML) models (SVM with a linear kernel) for use case 1
 - Decision Boundary Plot (Figure 4)
