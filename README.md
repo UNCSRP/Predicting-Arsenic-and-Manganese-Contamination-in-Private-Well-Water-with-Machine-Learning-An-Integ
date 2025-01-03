@@ -1,5 +1,5 @@
 # P1012-NC_Well_Arsenic
-> Analyses used to determine if geologic factors and well construction characteristics can predict metal contamination and what thresholds are certain wells more vulnerable.
+> Analyses used to determine if geologic factors and well construction characteristics can predict metal (arsenic and manganese) contamination and what at what thresholds are certain wells more at risk for contamination.
 
 > All analyses in this respository are designated by their figure number or table number in the manuscript in parantheses.
 
