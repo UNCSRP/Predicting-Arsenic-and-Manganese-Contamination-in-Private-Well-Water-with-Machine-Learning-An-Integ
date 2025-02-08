@@ -1,8 +1,8 @@
 # Well Water Permitting Data Meets Geology: Machine Learning Predictions of Arsenic and Manganese Contamination across Diverse Data Streams
 
-Analyses used to determine if geology, geography, and well construction characteristics can predict metal (arsenic and manganese) contamination and what at what thresholds are certain wells more at risk for contamination. All analyses in this respository are designated by their figure number or table number in the manuscript in parantheses.
-
 This code was generated to support the manuscript entitled  'Well Water Permitting Data Meets Geology: Machine Learning Predictions of Arsenic and Manganese Contamination across Diverse Data Streams'...
+
+These analyses were used to determine if geology, geography, and well construction characteristics can predict metal (arsenic and manganese) contamination and what at what thresholds are certain wells more at risk for contamination. All analyses in this respository are designated by their figure number or table number in the manuscript in parantheses.
 
 > In the instance that the files are unable to rendered, they can be rendered at the [NBViewer link](). 
 
