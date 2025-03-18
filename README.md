@@ -1,6 +1,6 @@
 # Predicting Arsenic and Manganese Contamination in Private Well Water with Machine Learning: An Integrated Analysis of Geological, Construction, and Permitting Data
 
-This code was generated to support the manuscript entitled  'Well Water Permitting Data Meets Geology: Machine Learning Predictions of Arsenic and Manganese Contamination across Diverse Data Streams'...
+This code was generated to support the manuscript entitled  'Predicting Arsenic and Manganese Contamination in Private Well Water with Machine Learning: An Integrated Analysis of Geological, Construction, and Permitting Data'...
 
 These analyses were used to determine if geology, geography, and well construction characteristics can predict metal (arsenic and manganese) contamination and what at what thresholds are certain wells more at risk for contamination. All analyses in this respository are designated by their figure number or table number in the manuscript in parantheses.
 
