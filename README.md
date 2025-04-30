@@ -2,11 +2,12 @@
 
 This code was generated to support the manuscript entitled  'Predicting Arsenic and Manganese Contamination in Private Well Water with Machine Learning: An Integrated Analysis of Geological, Construction, and Permitting Data' soon to be published.
 
-![image](https://github.com/user-attachments/assets/403c753b-9d74-43e1-9814-1ae25eeae4f6)
+![image](https://github.com/user-attachments/assets/fa67bfbe-597e-4f3b-bb76-4509c225d1de)
+
 
 These analyses were used to determine if geology, geography, and well construction characteristics can predict metal (arsenic and manganese) contamination and what at what thresholds are certain wells more at risk for contamination. All analyses in this respository are designated by their figure number or table number in the manuscript in parantheses.
 
-> In the instance that the files are unable to rendered, they can be rendered at the [NBViewer link](). 
+> In the instance that the files are unable to rendered, they can be rendered at the [NBViewer link](https://nbviewer.org/github/UNCSRP/Predicting-Arsenic-and-Manganese-Contamination-in-Private-Well-Water-with-Machine-Learning-An/tree/main/). 
 
 # 1. Data Imputation
 - Using random forest to impute the predictor variables and Quantile Regression Imputation of Left-Censored Data (QRILC) to impute each metal's concentration
