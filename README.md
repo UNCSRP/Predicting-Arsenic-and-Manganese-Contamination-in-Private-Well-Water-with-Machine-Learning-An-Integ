@@ -2,7 +2,9 @@
 
 This code was generated to support the manuscript entitled  'Predicting Arsenic and Manganese Contamination in Private Well Water with Machine Learning: An Integrated Analysis of Geological, Construction, and Permitting Data' soon to be published.
 
-<img src = 'https://github.com/user-attachments/assets/fa67bfbe-597e-4f3b-bb76-4509c225d1de' width = '600' align = 'center'>
+<p align="center">
+<img src = 'https://github.com/user-attachments/assets/fa67bfbe-597e-4f3b-bb76-4509c225d1de' width = '600'>
+</p>
 
 <br>
 These analyses were used to determine if geology, geography, and well construction characteristics can predict metal (arsenic and manganese) contamination and what at what thresholds are certain wells more at risk for contamination. All analyses in this respository are designated by their figure number or table number in the manuscript in parantheses.
