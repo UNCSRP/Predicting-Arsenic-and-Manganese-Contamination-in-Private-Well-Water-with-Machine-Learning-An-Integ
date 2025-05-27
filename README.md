@@ -3,7 +3,7 @@
 This code was generated to support the manuscript entitled  'Predicting Arsenic and Manganese Contamination in Private Well Water with Machine Learning: An Integrated Analysis of Geological, Construction, and Permitting Data' soon to be published.
 
 <p align="center">
-<img src = 'https://github.com/user-attachments/assets/fa67bfbe-597e-4f3b-bb76-4509c225d1de' width = '600'>
+<img src = 'https://github.com/user-attachments/assets/c0e23959-f413-4380-a22f-407359f2eb16' width = '600'>
 </p>
 
 <br>
