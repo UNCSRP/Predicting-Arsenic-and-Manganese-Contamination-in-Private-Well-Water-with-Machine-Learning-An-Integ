@@ -22,7 +22,7 @@ These analyses were used to determine if geology, geography, and well constructi
 # 3. Metal Prediction (Table 3)
 - Predicting arsenic and manganese contamination based on well data using supervised ML (random forest and support vector machine (SVM))
 
-# 4. ML Visualizations (Figures 2-4)
+# 4. ML Visualizations (Figures 2-4, S1, S2)
 - Confusion Matrix Figure (Figure 2)
   - Visualization of confusion matrix metrics from the top performing supervised machine learning model across the use cases (SVM with a linear kernel)
 - Variable Importance Plot (Figure 3)
