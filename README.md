@@ -27,5 +27,5 @@ These analyses were used to determine if geology, geography, and well constructi
   - Visualization of confusion matrix metrics from the top performing supervised machine learning model across the use cases (SVM with a linear kernel)
 - Variable Importance Plot (Figure 3)
   - Shows importance of each predictor from the top performing machine learning (ML) models (SVM with a linear kernel) for use case 1
-- Decision Boundary Plot (Figure 4)
+- Decision Boundary Plot (Figure 4, S1, S2)
   - Visualization of two predictors to determine how well those variables could predict metal contamination
