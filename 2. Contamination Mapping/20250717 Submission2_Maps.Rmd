@@ -1,0 +1,187 @@
+---
+title: "20250717 Submission2_Maps"
+author: "Cailee Harrington"
+date: "2025-07-17"
+output: html_document
+---
+
+Creating maps for submission 2 of the As Mn ML NC project. 
+
+## Prepare workspace
+```{r}
+
+# Load packages
+library(htmltools)
+library(plyr)
+library(dplyr)
+library(tidyverse)
+library(corrplot)
+library(data.table)
+library(Hmisc)
+library(stats)
+library(RColorBrewer)
+library(tidycensus)
+library(dplyr)
+library(tidyverse)
+library(corrplot)
+library(data.table)
+library(Hmisc)
+library(sf)
+library(ggplot2)
+library(tmap)
+library(tmaptools)
+library(leaflet)
+library(classInt)
+library(cowplot)
+library(ggthemes)
+library(readxl)
+
+```
+
+## Prepare data
+
+### Prepare testing data
+```{r}
+
+# Read in testing data
+Data <- read.csv('/Users/caileeharrington/Library/CloudStorage/OneDrive-UniversityofNorthCarolinaatChapelHill/Projects shared w me/AsinNC_MachineLearning/5_DataAnalyses/Maps_CEH/Tract_tests.csv')
+
+# Double check that all arsenic and manganese observations are labeled as such
+table(Data$Metal)
+## All of these are either arsenic, chromium, or manganese as listed as Ar, Cr, or Mn, respectively 
+
+# Separate into arsenic and manganese data
+Arsenic <- Data %>%
+  filter(Metal == "Ar")
+Manganese <- Data %>%
+  filter(Metal == "Mn")
+
+# Check the correct number of rows are present in each dataset
+nrow(Arsenic)
+nrow(Manganese)
+# Each of these has 715 rows, as expected, so this does seem to have worked correctly. 
+
+# Check that there are no duplicates for the OID_ column for arsenic, which if so can be used for tabulating the number of tests per tract
+sum(duplicated(Arsenic$OID_))
+## There are no duplicates 
+
+# Calculate number of tests per tract for arsenic
+AsTests <- Arsenic %>%
+  group_by(geoid10) %>%
+  summarise(ntests = n_distinct(OID_))
+## I checked for tract 37179020315 and 37179020204 and the number of rows with that geoid in the Arsenic dataset matches the tabulated number in AsTests
+
+# Check that there are no duplicates for the OID_ column for manganese
+sum(duplicated(Manganese$OID_))
+## There are no duplicates 
+
+# Calculate number of tests per tract for manganese
+MnTests <- Manganese %>%
+  group_by(geoid10) %>%
+  summarise(ntests = n_distinct(OID_))
+## I checked for tract 37179020315 and 37179020204 and the number of rows with that geoid in the Manganese dataset matches the tabulated number in MnTests
+
+## Upon visual comparison, it seems like the same numbers of tests per tract are present for manganese and arsenic, which is what we would expect based on what we know of the data. From what I know, well water samples were taken and tested for both manganese and arsenic. 
+
+# I can check this by joining these into 1 dataset and subtracting them from each other
+
+# Create dataset with both the Mn and the As number of tests per tract
+AsMn <- full_join(AsTests, MnTests, by = "geoid10")
+
+# Check this worked by checking the means against the original datasets
+mean(AsTests$ntests)
+mean(AsMn$ntests.x)
+mean(MnTests$ntests)
+mean(AsMn$ntests.y)
+## This did work, the means for As match each other and the same is true for the Mn data
+
+# Subtract the numbers of tests from each other
+Subtract <- AsMn %>%
+  mutate(subtract = ntests.x - ntests.y)
+## Upon checking visually, all the subtract values are 0, so the number of Mn tests does match the number of As tests
+
+```
+
+### Prepare census data 
+```{r}
+
+# Get census/geographic info needed into R to make the maps
+
+#API key to access census data. Request your own API key at http://api.census.gov/data/key_signup.html 
+census_api_key("ce6e116baeb9ceefd5c3ec1e5b1feffbf3f6667a", install=TRUE, overwrite=TRUE) 
+readRenviron("~/.Renviron")
+#v18 <- load_variables(2018, "acs5", cache = TRUE) #loading variables in ACS to search for 
+
+census <- tidycensus::get_acs(state="NC", geography = "tract",
+                              variables = c("population"=	"B01003_001"), year = 2018, geometry = TRUE) %>% 
+  as.data.frame(.) %>% 
+  dplyr::rename(geoid10=GEOID) %>%
+  dplyr::rename(geometry_tract=geometry)
+
+options(tigris_use_cache = TRUE)
+
+census <- census %>%
+  transform(geoid10=as.numeric(geoid10))
+
+# Set output folder
+Output_Folder <- ('/Users/caileeharrington/Library/CloudStorage/OneDrive-UniversityofNorthCarolinaatChapelHill/Projects shared w me/AsinNC_MachineLearning/6_Manuscript/Tables & Figures/Submission 2 Maps')
+
+# Create a current date variable to name output files
+cur_date <- str_replace_all(Sys.Date(),"-","")
+
+```
+
+### Prepare data for mapping 
+```{r}
+
+# Read in file containing all Union County census tracts and keep only the GEOID column
+Union <- read.csv(file = '/Users/caileeharrington/Library/CloudStorage/OneDrive-UniversityofNorthCarolinaatChapelHill/Projects shared w me/AsinNC_MachineLearning/5_DataAnalyses/Maps_CEH/Full_tracts.csv') %>%
+  select(geoid10)
+
+# Join the arsenic data to the census tract file
+AsTract <- full_join(Union, AsTests, by = "geoid10")
+
+# Check the number of NA values (which should be 5, given we have data for 36 of the 41 Union County census tracts)
+sum(is.na(AsTract$ntests))
+## There are 5 NA values, as expected
+
+# Join the AsTract file to the census data
+Mapping <- inner_join(AsTract, census, by = "geoid10")
+
+# Check the number of rows in the Mapping dataset (should be 41, like the AsTract dataset)
+nrow(Mapping)
+## There are the correct number of rows in this dataset. 
+
+```
+
+## Map of Number of Tests
+
+### Arsenic
+But this map is also likely valid for manganese because the same well sampling was used to test for both of them. 
+```{r}
+
+# Get info on min, max, etc. needed to set map parameters
+summary(Mapping$ntests, useNA="always")
+
+# Create map
+NTests_Map <- 
+  ggplot()+
+  geom_sf(data=Mapping,aes(geometry=geometry_tract,fill = ntests), color="white", linewidth=0.05) + 
+  geom_sf_label(data=Mapping,aes(geometry=geometry_tract, label=ntests), fill=NA, na.rm = TRUE, label.size = 0) +
+  ggthemes::theme_map() +
+  scale_fill_gradient(low="#FBE3D6", high = "#C04F15", na.value = "black", name="Number of Well Tests", guide="colourbar", limits=c(1,135)) +
+  theme(legend.position="bottom", 
+        legend.direction="horizontal",
+        legend.justification="center",
+        legend.text=element_text(size=8),
+        legend.title=element_text(size=8, face="bold"),
+        legend.key.height = unit(.5, 'cm'),
+        legend.key.width = unit(.4, 'cm'),
+        legend.background=element_rect(colour = 'black', fill = 'white', linetype = 'solid'), )
+plot(NTests_Map)
+
+# Save as JPG 
+ggsave(NTests_Map, width=unit(10, "in"), height=unit(10, "in"), filename='/Users/caileeharrington/Library/CloudStorage/OneDrive-UniversityofNorthCarolinaatChapelHill/Projects shared w me/AsinNC_MachineLearning/6_Manuscript/Tables & Figures/Submission 2 Maps/Map_ntests 2.jpg')
+
+```
+
