@@ -16,16 +16,19 @@ These analyses were used to determine if geology, geography, and well constructi
 # 1. Data Imputation
 - Using random forest to impute the predictor variables and Quantile Regression Imputation of Left-Censored Data (QRILC) to impute each metal's concentration
 
-# 2. iAs/Mn Contamination Mapping (Figure 1)
-- Visualizing iAs/Mn contamination by census tract in Union County, NC
+# 2. Contamination Mapping (Figure 1,2)
+- Tests Mapping (Figure 1)
+  - Choropleth of the number of private wells sampled per census tract in Union County, NC
+- Contamination Mapping (Figure 2)
+  - Visualizing As/Mn contamination by census tract in Union County, NC
 
 # 3. Metal Prediction (Table 3)
 - Predicting arsenic and manganese contamination based on well data using supervised ML (random forest and support vector machine (SVM))
 
-# 4. ML Visualizations (Figures 2-4, S1, S2)
-- Confusion Matrix Figure (Figure 2)
+# 4. ML Visualizations (Figures 3-5, S1, S2)
+- Confusion Matrix Figure (Figure 3)
   - Visualization of confusion matrix metrics from the top performing supervised machine learning model across the use cases (SVM with a linear kernel)
-- Variable Importance Plot (Figure 3)
+- Variable Importance Plot (Figure 4)
   - Shows importance of each predictor from the top performing machine learning (ML) models (SVM with a linear kernel) for use case 1
-- Decision Boundary Plot (Figure 4, S1, S2)
+- Decision Boundary Plot (Figure 5, S1, S2)
   - Visualization of two predictors to determine how well those variables could predict metal contamination
