@@ -16,7 +16,7 @@ These analyses were used to determine if geology, geography, and well constructi
 # 1. Data Imputation
 - Using random forest to impute the predictor variables and Quantile Regression Imputation of Left-Censored Data (QRILC) to impute each metal's concentration
 
-# 2. Contamination Mapping (Figure 1,2)
+# 2. Contamination Mapping (Figures 1,2)
 - Tests Mapping (Figure 1)
   - Choropleth of the number of private wells sampled per census tract in Union County, NC
 - Contamination Mapping (Figure 2)
